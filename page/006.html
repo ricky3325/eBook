@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <body onload="load()">
+  <body onload="load(scalePage)">
     <div id="mainAudio">
       <!-- <audio id="player001" src="http://59.127.185.48:5050/audio/songs.mp3"></audio> -->
     </div>
-    <!-- <div id="mainImage" style="width:100%; height: 100%;"  onMouseDown="showMouseButton()"> -->
-    <div id="mainImage" style="width:100%; height: 100%;">
-      <img id="mainImageIMG" style="" src="" alt="">
+    <div id="mainImage" style="background-image: url(''); width:1000px; height: 1000px"  onMouseDown="showMouseButton()">
+    <!-- <div id="mainImage" style="width:100%; height: 100%;"> -->
       <!-- <div style="position: absolute; z-index:2; left:100px; top:100px; width: 30px; height: 30px;">
         <img src="../icon/triangle.jpg">
       </div> -->
@@ -26,110 +25,6 @@
       }
     </style>
     <!-- <script type="text/javascript" src="http://59.127.185.48:5050/006.json"></script> -->
-    <script>
-
-      var triH = 30;
-      var triW = 30;
-      var maTriH = 30/2008;
-      var maTriW = 30/2717; 
-
-      var deHight = 200;
-      var deWidth = 200;
-      var topPos = 10;
-      var topLeft = 10;
-      var mainImgScr = "";
-      var mainImage = document.getElementById('mainImage');
-      var mainImageIMG = document.getElementById('mainImageIMG');
-      var audioPlayer =  document.getElementById('mainAudio');
-      var prdname = '';
-      var playName = '';
-
-      function load() {
-        // var mydata = JSON.parse(objects);
-        // alert(mydata.length);
-        fetch("http://59.127.185.48:5050/007.json")
-        .then(response => {
-          return response.json();
-        })
-        .then(jsondata => {
-          console.log(jsondata.objects);
-          mainImgScr = jsondata.objects[0].src;
-          mainImageIMG.src = mainImgScr;
-          for (i = 0; i < jsondata.objects.length; i++) {
-            var moveTop = 0-topPos+jsondata.objects[i].top; 
-            var moveLeft = 0-topLeft+jsondata.objects[i].left;
-            var iconHight = jsondata.objects[i].height * jsondata.objects[i].scaleX;
-            var iconWidth = jsondata.objects[i].width * jsondata.objects[i].scaleY;
-            var link = jsondata.objects[i].link;
-            var url = "";
-            alert(jsondata.objects[i].type);
-            alert(link.enabled + "SSSS");
-            alert(link.url + "AAAA");
-            if(link.enabled){
-              url = link.url;
-            }
-
-            if(jsondata.objects[i].type == "image"){
-              // alert("image");
-              deHight = jsondata.objects[i].height;
-              deWidth = jsondata.objects[i].width;
-              topPos = jsondata.objects[i].top;
-              topLeft = jsondata.objects[i].left;
-            }
-            else if(jsondata.objects[i].type == "triangle"){
-              prdname += "<div onclick=\"playAudio('player"+i.toString()+"')\" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/triangle.jpg\"></div>";
-              playName += "<audio id=player"+i.toString()+" src="+url+"></audio>";
-              // alert("triangle" + moveTop);
-              // prdname = "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
-            }
-            else if(jsondata.objects[i].type == "rect"){
-              prdname += "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/rect.png\"></div>";
-              // alert("rect"+ moveLeft);
-            }
-            else if(jsondata.objects[i].type == "circle"){
-              // prdname += "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/circle.jpg\"></div>";
-              prdname += "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
-              // alert("circle");
-            }
-            
-          }
-          mainImage.innerHTML += prdname;
-          audioPlayer.innerHTML += playName;
-        });
-      }
-      function playAudio(p){
-        var playingAudio = document.getElementById(p);
-        if (playingAudio.duration > 0 && !playingAudio.paused) {
-          //Its playing...do your job
-          // alert("pauseAudio");
-          playingAudio.pause();
-        } else {
-          // alert("playAudio");
-          playingAudio.play();
-        }
-      }
-      function showMouseButton() {
-        switch (event.button){
-          case 0:
-            alert("你用滑鼠左鍵！"+" X:"+event.pageX+" Y:"+event.pageY);
-            break;
-          case 1:
-            deHight = deHight * 0.8;
-            deWidth = deWidth * 0.8;
-            alert("你用滑鼠中鍵！"+" X:"+event.pageX+" Y:"+event.pageY+'A:'+deHight+'B:'+deWidth);
-            mainImage.style = 'width:'+deWidth+'px; height: '+deHight+'px;';
-            break;
-          case 2:
-            deHight = deHight / 0.8;
-            deWidth = deWidth / 0.8;
-            alert("你用滑鼠右鍵！"+" X:"+event.pageX+" Y:"+event.pageY);
-            mainImage.style = 'width:'+deWidth+'px; height: '+deHight+'px;';
-            break;
-          default:
-            alert("未知的滑鼠鍵！"+event.button);
-            break;
-        }
-      }
-      </script>
+    <script  src="./006.js"></script>
   </body>
 </html>

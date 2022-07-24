@@ -117,16 +117,22 @@
  <div class=footer__title>下面中間書名 下面中間書名 下面中間書名</div>
  <!-- Ricky:下面中間書名 -->
  <div class=footer__controls>
+ <button onclick="zoomIn()" class=footer__zoomIN id=zoomIN>
+  <img src="../../icon/zoomIn.png" width="30" height="30" alt="zoomIN">
+ </button>
+ <button onclick="zoomOut()" class=footer__zoomOUT id=zoomOUT>
+  <img src="../../icon/zoomOut.png" width="30" height="30" alt="zoomOUT">
+ </button>
  <button class=footer__button id=undo_btn>
- <img src=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+QnV0dG9uL1ZJZGVvL0JhY2sgdG8gU3RhcnRfTm9ybWFsPC90aXRsZT4KICAgIDxnIGlkPSJBLjItVmlld2VyKOesrOS4gOWMhSkiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJDb21wb25lbnQvQWN0aW9uL0ljb24vVmlld2VyL1Jlc3RhcnQvYnRuX3Jlc3RhcnRfbiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0LjAwMDAwMCwgLTE0LjAwMDAwMCkiIGZpbGw9IiMyNTI2MjQiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNi4xMzMzMzMzLDMwIEwxNi4xMzMzMzMzLDI4Ljk4MzY1MjcgTDE3LjIsMjguOTgzNjUyNyBMMTcuMiwzMCBMMTYuMTMzMzMzMywzMCBaIE0yMy42LDE3LjgwMzg1MjYgQzI3LjEzNDYxMzMsMTcuODAzODUyNiAzMCwyMC41MzQwNDYgMzAsMjMuOTAxOTE2MSBDMzAsMjcuMjY5Nzg2MiAyNy4xMzQ2MTMzLDMwIDIzLjYsMzAgTDE5LjMzMzMzMzMsMzAgTDE5LjMzMzMzMzMsMjguOTgzNjUyNyBMMjMuNiwyOC45ODM2NTI3IEMyNi41NDU0OTMzLDI4Ljk4MzY1MjcgMjguOTMzMzMzMywyNi43MDg0NTc2IDI4LjkzMzMzMzMsMjMuOTAxOTE2MSBDMjguOTMzMzMzMywyMS4wOTUzNzQ3IDI2LjU0NTQ5MzMsMTguODIwMTg5NyAyMy42LDE4LjgyMDE4OTcgTDE2LjA0MTgyNCwxOC44MjAxNzk2IEwxOS4yNzk3MzMzLDIxLjkwNTMwMTggTDE4LjUyNTQ4MjcsMjIuNjIzOTYxIEwxNCwxOC4zMTIwMDU5IEwxOC41MjU0OTMzLDE0IEwxOS4yNzk3MzMzLDE0LjcxODY3OTUgTDE2LjA0MTgyNCwxNy44MDM4MzIzIEwyMy42LDE3LjgwMzg1MjYgWiIgaWQ9IkJ1dHRvbi9WSWRlby9CYWNrLXRvLVN0YXJ0X05vcm1hbCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+ alt>
+  <img src=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+QnV0dG9uL1ZJZGVvL0JhY2sgdG8gU3RhcnRfTm9ybWFsPC90aXRsZT4KICAgIDxnIGlkPSJBLjItVmlld2VyKOesrOS4gOWMhSkiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJDb21wb25lbnQvQWN0aW9uL0ljb24vVmlld2VyL1Jlc3RhcnQvYnRuX3Jlc3RhcnRfbiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0LjAwMDAwMCwgLTE0LjAwMDAwMCkiIGZpbGw9IiMyNTI2MjQiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNi4xMzMzMzMzLDMwIEwxNi4xMzMzMzMzLDI4Ljk4MzY1MjcgTDE3LjIsMjguOTgzNjUyNyBMMTcuMiwzMCBMMTYuMTMzMzMzMywzMCBaIE0yMy42LDE3LjgwMzg1MjYgQzI3LjEzNDYxMzMsMTcuODAzODUyNiAzMCwyMC41MzQwNDYgMzAsMjMuOTAxOTE2MSBDMzAsMjcuMjY5Nzg2MiAyNy4xMzQ2MTMzLDMwIDIzLjYsMzAgTDE5LjMzMzMzMzMsMzAgTDE5LjMzMzMzMzMsMjguOTgzNjUyNyBMMjMuNiwyOC45ODM2NTI3IEMyNi41NDU0OTMzLDI4Ljk4MzY1MjcgMjguOTMzMzMzMywyNi43MDg0NTc2IDI4LjkzMzMzMzMsMjMuOTAxOTE2MSBDMjguOTMzMzMzMywyMS4wOTUzNzQ3IDI2LjU0NTQ5MzMsMTguODIwMTg5NyAyMy42LDE4LjgyMDE4OTcgTDE2LjA0MTgyNCwxOC44MjAxNzk2IEwxOS4yNzk3MzMzLDIxLjkwNTMwMTggTDE4LjUyNTQ4MjcsMjIuNjIzOTYxIEwxNCwxOC4zMTIwMDU5IEwxOC41MjU0OTMzLDE0IEwxOS4yNzk3MzMzLDE0LjcxODY3OTUgTDE2LjA0MTgyNCwxNy44MDM4MzIzIEwyMy42LDE3LjgwMzg1MjYgWiIgaWQ9IkJ1dHRvbi9WSWRlby9CYWNrLXRvLVN0YXJ0X05vcm1hbCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+ alt>
  </button>
  <div class="footer__progress progress-container">
- <input type=range min=1 max=10 value=2>
- <span class=line-bg></span>
- <span class=line style="width:calc(50% - 10px)"></span>
- <div class=dot-box>
- <span class=dot style=left:50%></span>
- </div>
+  <input type=range min=1 max=10 value=2>
+  <span class=line-bg></span>
+  <span class=line style="width:calc(50% - 10px)"></span>
+  <div class=dot-box>
+    <span class=dot style=left:50%></span>
+  </div>
  </div>
  <div class="footer__button progress-percent">100%</div>
  <div class="footer__button pagination" style=display:none></div>
@@ -171,6 +177,7 @@
  <div class=viewer-mask style=opacity:0></div>
 <!-- partial -->
   <script  src="./script.js"></script>
+  <script  src="../../page/006.js"></script>
 
 </body>
 </html>
