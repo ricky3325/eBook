@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
 <!DOCTYPE html> 
 <html lang=zh-Hant-TW>
   <meta charset=utf-8>
@@ -9,17 +18,16 @@
   <meta http-equiv=X-UA-Compatible content="ie=edge">
   <meta http-equiv=content-language content=zh-tw>
   <meta property=og:site_name content=目川>
-  <meta property=og:type content=product>
-  <meta property=og:image content=logo.png>
   <meta property=og:url content=https://www.facebook.com/AquaviewStory//>
+  <meta property=og:type content=product>
   <meta property=og:description content=目川文化創立於2007年，發展至今已有十五年。專門出版兒學習產品的目川，衷心期望家長與兒童們，能夠透過「目川的眼睛」看見更為嶄新的視野。>
-  <link rel="stylesheet" href="./style.css">
-<body id=book_container style=overflow:hidden>
+  <meta property=og:image content=logo.png>
+  <body id=book_container style=overflow:hidden>
  <div class=viewer id=viewer>
  <div class="viewer__body panel" background=data:, layout=spread bookmark>
  <main class=viewer__body__content style=opacity:1>
   <div id=book_area>
-    <iframe width="100%" height="100%" src="./page/001.html" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="book_page" style=border:none width="100%" height="100%" src="./page/reader.html" ></iframe>
   </div>
   <div id=book_area_right class=sf-hidden></div>
   <button class="viewer__body__pagination next" onclick="viewer__bodyNext()"></button>
@@ -32,12 +40,12 @@
  <!-- Ricky:左下角書名 -->
  <span>左下角書名 左下角書名 左下角書名</span>
  <!-- Ricky:左下角書名 -->
- <span>100%</span>
+ <span id="input"></span>
  </div>
  <!-- Ricky:控制這邊數字達成隱藏顯示 -->
- <header class=header style=top:0px>
+ <header id="header01_hlkjln" class=header style=top:10px>
  <!-- Ricky:控制這邊數字達成隱藏顯示 -->
-  <a class=header__button href="https://viewer-ebook.books.com.tw/viewer/index.html?readlist=all">020
+  <a class=header__button href="https://viewer-ebook.books.com.tw/viewer/index.html?readlist=all">02
     <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTFweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMTEgMjAiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+Q29tcG9uZW50L05hdmlnYXRpb24vVG9wIEJhci9VdGlsL0J1dHRvbi9CYWNrL2J0bl9uYXZpX2JhY2tfbjwvdGl0bGU+CiAgICA8ZyBpZD0iQS4yLVZpZXdlcijnrKzkuIDljIUpIiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyBpZD0iTS4xLjIu5pWZ5a24X3N0ZXAzLea1geWLleeJiOWei+abuOexjVZpZXdlci0iIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xOC4wMDAwMDAsIC0zMC4wMDAwMDApIj4KICAgICAgICAgICAgPGcgaWQ9Ikdyb3VwIj4KICAgICAgICAgICAgICAgIDxnIGlkPSJHcm91cC0zNCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMDAwMDAsIDE4LjAwMDAwMCkiPgogICAgICAgICAgICAgICAgICAgIDxnIGlkPSJDb21wb25lbnQvTmF2aWdhdGlvbi9OYXZpZ2F0aW9uLWJhci9WaWV3ZXIvQXVkaW8tYm9vayI+CiAgICAgICAgICAgICAgICAgICAgICAgIDxnIGlkPSJDb21wb25lbnQvTmF2aWdhdGlvbi9Ub3AtQmFyL1V0aWwvQnV0dG9uL0JhY2svYnRuX25hdmlfYmFja19uIj4KICAgICAgICAgICAgICAgICAgICAgICAgICAgIDxyZWN0IGlkPSJSZWN0YW5nbGUiIHg9IjExIiB5PSIxMSIgd2lkdGg9IjIxLjgxODE4MTgiIGhlaWdodD0iMjEuODE4MTgxOCI+PC9yZWN0PgogICAgICAgICAgICAgICAgICAgICAgICAgICAgPHBvbHlsaW5lIGlkPSJjaGV2cm9uIiBzdHJva2U9IiM0QTRENDkiIHN0cm9rZS13aWR0aD0iMS4yIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBwb2ludHM9IjI4LjA5MDkwOTEgMTMgMTkgMjIuMDkwOTA5MSAyOC4wOTA5MDkxIDMxLjE4MTgxODIiPjwvcG9seWxpbmU+CiAgICAgICAgICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==" alt>
   </a>
   <!-- Ricky:選單的ICON -->
@@ -89,7 +97,7 @@
  </div>
  
  <!-- Ricky:控制這邊數字達成隱藏顯示 -->
- <footer class=footer style=bottom:0px>
+ <footer id="footer_hlkjln" class=footer style=bottom:0px>
  <!-- Ricky:控制這邊數字達成隱藏顯示 -->
  <!-- <div class=viewer__buy>
   <button class=viewer__buy__button name=product>
@@ -109,16 +117,22 @@
  <div class=footer__title>下面中間書名 下面中間書名 下面中間書名</div>
  <!-- Ricky:下面中間書名 -->
  <div class=footer__controls>
+ <button onclick="zoomFunc('zoomIN')" class=footer__zoomIN id=zoomIN>
+  <img src="./icon/zoomIn.png" width="30" height="30" alt="zoomIN">
+ </button>
+ <button onclick="zoomFunc('zoomOUT')" class=footer__zoomOUT id=zoomOUT>
+  <img src="./icon/zoomOut.png" width="30" height="30" alt="zoomOUT">
+ </button>
  <button class=footer__button id=undo_btn>
- <img src=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+QnV0dG9uL1ZJZGVvL0JhY2sgdG8gU3RhcnRfTm9ybWFsPC90aXRsZT4KICAgIDxnIGlkPSJBLjItVmlld2VyKOesrOS4gOWMhSkiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJDb21wb25lbnQvQWN0aW9uL0ljb24vVmlld2VyL1Jlc3RhcnQvYnRuX3Jlc3RhcnRfbiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0LjAwMDAwMCwgLTE0LjAwMDAwMCkiIGZpbGw9IiMyNTI2MjQiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNi4xMzMzMzMzLDMwIEwxNi4xMzMzMzMzLDI4Ljk4MzY1MjcgTDE3LjIsMjguOTgzNjUyNyBMMTcuMiwzMCBMMTYuMTMzMzMzMywzMCBaIE0yMy42LDE3LjgwMzg1MjYgQzI3LjEzNDYxMzMsMTcuODAzODUyNiAzMCwyMC41MzQwNDYgMzAsMjMuOTAxOTE2MSBDMzAsMjcuMjY5Nzg2MiAyNy4xMzQ2MTMzLDMwIDIzLjYsMzAgTDE5LjMzMzMzMzMsMzAgTDE5LjMzMzMzMzMsMjguOTgzNjUyNyBMMjMuNiwyOC45ODM2NTI3IEMyNi41NDU0OTMzLDI4Ljk4MzY1MjcgMjguOTMzMzMzMywyNi43MDg0NTc2IDI4LjkzMzMzMzMsMjMuOTAxOTE2MSBDMjguOTMzMzMzMywyMS4wOTUzNzQ3IDI2LjU0NTQ5MzMsMTguODIwMTg5NyAyMy42LDE4LjgyMDE4OTcgTDE2LjA0MTgyNCwxOC44MjAxNzk2IEwxOS4yNzk3MzMzLDIxLjkwNTMwMTggTDE4LjUyNTQ4MjcsMjIuNjIzOTYxIEwxNCwxOC4zMTIwMDU5IEwxOC41MjU0OTMzLDE0IEwxOS4yNzk3MzMzLDE0LjcxODY3OTUgTDE2LjA0MTgyNCwxNy44MDM4MzIzIEwyMy42LDE3LjgwMzg1MjYgWiIgaWQ9IkJ1dHRvbi9WSWRlby9CYWNrLXRvLVN0YXJ0X05vcm1hbCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+ alt>
+  <img src=data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTZweCIgaGVpZ2h0PSIxNnB4IiB2aWV3Qm94PSIwIDAgMTYgMTYiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+QnV0dG9uL1ZJZGVvL0JhY2sgdG8gU3RhcnRfTm9ybWFsPC90aXRsZT4KICAgIDxnIGlkPSJBLjItVmlld2VyKOesrOS4gOWMhSkiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJDb21wb25lbnQvQWN0aW9uL0ljb24vVmlld2VyL1Jlc3RhcnQvYnRuX3Jlc3RhcnRfbiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTE0LjAwMDAwMCwgLTE0LjAwMDAwMCkiIGZpbGw9IiMyNTI2MjQiIGZpbGwtcnVsZT0ibm9uemVybyI+CiAgICAgICAgICAgIDxwYXRoIGQ9Ik0xNi4xMzMzMzMzLDMwIEwxNi4xMzMzMzMzLDI4Ljk4MzY1MjcgTDE3LjIsMjguOTgzNjUyNyBMMTcuMiwzMCBMMTYuMTMzMzMzMywzMCBaIE0yMy42LDE3LjgwMzg1MjYgQzI3LjEzNDYxMzMsMTcuODAzODUyNiAzMCwyMC41MzQwNDYgMzAsMjMuOTAxOTE2MSBDMzAsMjcuMjY5Nzg2MiAyNy4xMzQ2MTMzLDMwIDIzLjYsMzAgTDE5LjMzMzMzMzMsMzAgTDE5LjMzMzMzMzMsMjguOTgzNjUyNyBMMjMuNiwyOC45ODM2NTI3IEMyNi41NDU0OTMzLDI4Ljk4MzY1MjcgMjguOTMzMzMzMywyNi43MDg0NTc2IDI4LjkzMzMzMzMsMjMuOTAxOTE2MSBDMjguOTMzMzMzMywyMS4wOTUzNzQ3IDI2LjU0NTQ5MzMsMTguODIwMTg5NyAyMy42LDE4LjgyMDE4OTcgTDE2LjA0MTgyNCwxOC44MjAxNzk2IEwxOS4yNzk3MzMzLDIxLjkwNTMwMTggTDE4LjUyNTQ4MjcsMjIuNjIzOTYxIEwxNCwxOC4zMTIwMDU5IEwxOC41MjU0OTMzLDE0IEwxOS4yNzk3MzMzLDE0LjcxODY3OTUgTDE2LjA0MTgyNCwxNy44MDM4MzIzIEwyMy42LDE3LjgwMzg1MjYgWiIgaWQ9IkJ1dHRvbi9WSWRlby9CYWNrLXRvLVN0YXJ0X05vcm1hbCI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+ alt>
  </button>
  <div class="footer__progress progress-container">
- <input type=range min=1 max=10 value=2>
- <span class=line-bg></span>
- <span class=line style="width:calc(50% - 10px)"></span>
- <div class=dot-box>
- <span class=dot style=left:50%></span>
- </div>
+  <input type=range min=1 max=10 value=2>
+  <span class=line-bg></span>
+  <span class=line style="width:calc(50% - 10px)"></span>
+  <div class=dot-box>
+    <span class=dot style=left:50%></span>
+  </div>
  </div>
  <div class="footer__button progress-percent">100%</div>
  <div class="footer__button pagination" style=display:none></div>
@@ -161,77 +175,7 @@
  </div>
  
  <div class=viewer-mask style=opacity:0></div>
- 
-
- 
- <script src="./script.js"></script>
- 
-<!-- <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1700571533513678&amp;ev=PageView&amp;noscript=1"></noscript>
-<noscript>
-  <img height="1" width="1" style="display:none" src="https://tr.line.me/tag.gif?c_t=lap&amp;t_id=6dfb1cd8-9f16-460d-944e-f660fa0a957e&amp;e=pv&amp;noscript=1">
-</noscript> -->
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+<!-- partial -->
+  <script  src="./script.js"></script>
+</body>
+</html>

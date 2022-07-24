@@ -21,7 +21,7 @@
       right:0;
       bottom:0;
       margin:0;
-      color:#4a4a4a;
+      color:#3b3b3b;
       background:#fafafa;
       word-break:break-all;
       -webkit-touch-callout:none;
@@ -191,7 +191,7 @@
       background-size:100%
     }
     .viewer__body[background="1"]{
-      background:#fafafa
+      background:#ffffff
     }
     .viewer__marker__controls{
       position:absolute;
@@ -202,7 +202,7 @@
       -webkit-box-direction:normal;
       -ms-flex-direction:column;
       flex-direction:column;
-      border:1px solid rgba(202,202,202,0.25);
+      border:1px solid rgba(255, 0, 0, 0.25);
       padding:5px;
       -webkit-writing-mode:initial;
       -ms-writing-mode:initial;
@@ -312,7 +312,7 @@
       justify-content:space-between;
       height:45px;
       padding:0 16px;
-      color:#a0a5a0
+      color:#ffffff
     }
     @media (min-width:768px){
       .viewer__body__meta{
@@ -360,7 +360,7 @@
       padding:15px 0 0;
       color:#020202;
       font-size:14px;
-      background:#b2d8ff6b
+      background:#d7eafd
     }
     @media (min-width:1024px){
       .footer{
@@ -369,7 +369,7 @@
     }
     .footer__title{
       padding:0 20px;
-      color:#a0a5a0;
+      color:#3b3b3b;
       display:block;
       display:-webkit-box;
       -webkit-line-clamp:1;
@@ -473,7 +473,7 @@
       -webkit-box-pack:center;
       -ms-flex-pack:center;
       justify-content:center;
-      border:1px solid rgba(202,202,202,0.25);
+      border:0px solid rgba(255, 255, 255, 0.25);
       padding:10px 5px;
       height:48px;
       background:#fff;
@@ -490,7 +490,7 @@
         border-radius:14px;
         -webkit-box-shadow:0 0 32px 2px rgb(42 42 42/5%);
         box-shadow:0 0 32px 2px rgb(42 42 42/5%);
-        background-color:#fff
+        background-color:rgb(37, 37, 37)
       }
     }
     .viewer__buy__button{

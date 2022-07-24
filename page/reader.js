@@ -10,10 +10,22 @@ var topLeft = 10;
 var mainImgScr = "";
 var mainImage = document.getElementById('mainImage');
 var audioPlayer =  document.getElementById('mainAudio');
+var mainIconFunc =  document.getElementById('mainIconFunc');
 var prdname = '';
 var playName = '';
-var scalePage = 1;
+var scalePage = 0.2;
 var buildElement = [];
+
+window.addEventListener('message', (e) =>{
+    // console.log('iframe='+ e.data);
+    if(e.data=='zoomOUT'){
+        zoomOut();
+    }
+    else if(e.data=='zoomIN'){
+        zoomIn();
+    }
+}, false);
+
 function zoomOut(){
     // alert("zooom");
     scalePage = scalePage * 0.8;
@@ -98,7 +110,7 @@ function load(scalePage) {
         else if(jsondata.objects[i].type == "circle"){
             var id1 = makeid(5);
             // prdname += "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/circle.jpg\"></div>";
-            prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"false\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
+            prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"false\" autoplay=\"0\" preload =\"none\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
             // prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+500+"px; top:"+500+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"false\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
             buildElement.push("icon"+id1);
             // alert("circle");
@@ -106,7 +118,7 @@ function load(scalePage) {
         
         }
         console.log(buildElement);
-        mainImage.innerHTML += prdname;
+        mainIconFunc.innerHTML += prdname;
         audioPlayer.innerHTML += playName;
     });
 }
@@ -131,31 +143,50 @@ function playAudio(p){
         playingAudio.play();
     }
 }
+function test(a){
+    alert('test:'+a)
+}
 function showMouseButton() {
     switch (event.button){
         case 0:
-        alert("你用滑鼠左鍵！"+" X:"+event.pageX+" Y:"+event.pageY);
+        // alert("你用滑鼠左鍵！"+" X:"+event.pageX+" Y:"+event.pageY+"TW:"+deWidth);
+        var sideBarWidth = deWidth / 6;
+        if(event.pageX > 5*sideBarWidth){
+            hideShowMsg("bodyNext");
+            // alert("下一頁！");
+        }
+        else if(event.pageX < sideBarWidth){
+            hideShowMsg("bodyPrev")
+            // alert("上一頁！");
+        }
+        else{
+            hideShowMsg("bodyHide")
+            // alert("隱藏！");
+        }
         break;
         case 1:
         // deHight = deHight * 0.8;
         // deWidth = deWidth * 0.8;
-        // alert("你用滑鼠中鍵！"+" X:"+event.pageX+" Y:"+event.pageY+'A:'+deHight+'B:'+deWidth);
+        alert("你用滑鼠中鍵！");
         // mainImage.style = 'width:'+deWidth+'px; height: '+deHight+'px;';
-        scalePage = scalePage * 0.8;
+        // scalePage = scalePage * 0.8;
         // alert("你用滑鼠中鍵！"+" X:"+event.pageX+" Y:"+event.pageY+'A:'+scalePage);
-        reLoad(scalePage);
+        // reLoad(scalePage);
         break;
         case 2:
         // deHight = deHight / 0.8;
         // deWidth = deWidth / 0.8;
-        // alert("你用滑鼠右鍵！"+" X:"+event.pageX+" Y:"+event.pageY);
+        alert("你用滑鼠右鍵！");
         // mainImage.style = 'width:'+deWidth+'px; height: '+deHight+'px;';
-        scalePage = scalePage / 0.8;
+        // scalePage = scalePage / 0.8;
         // alert("你用滑鼠右鍵！"+" X:"+event.pageX+" Y:"+event.pageY+'A:'+scalePage);
-        reLoad(scalePage);
+        // reLoad(scalePage);
         break;
         default:
         alert("未知的滑鼠鍵！"+event.button);
         break;
+    }
+    function hideShowMsg(m){
+        window.parent.postMessage(m, '*');
     }
 }
