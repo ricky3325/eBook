@@ -1,3 +1,7 @@
+var mainServer = "https://localhost:44344/files";
+var bookIsbn = "24525245010";
+var bookPage = "0";
+
 var triH = 30;
 var triW = 30;
 var maTriH = 30/2008;
@@ -55,7 +59,7 @@ function load(scalePage) {
     // var mydata = JSON.parse(objects);
     // alert(mydata.length);
     console.log(scalePage);
-    fetch("http://59.127.185.48:5050/007.json")
+    fetch(mainServer+"/"+bookIsbn+"/page/"+bookPage+"/page.json")
     .then(response => {
         return response.json();
     })
@@ -89,7 +93,7 @@ function load(scalePage) {
             mainImage.style = "background-image: url('"+mainImgScr+"'); background-size: cover; width:"+deWidth+"px; height: "+deHight+"px";
             // alert("width: "+deWidth+"px; height: "+deHight+"px;");
         }
-        else if(jsondata.objects[i].type == "triangle"){
+        else if(jsondata.objects[i].type == "voice"){
             var id1 = makeid(5);
             var id2 = makeid(5);
             prdname += "<button id=icon"+id1+" onclick=\"playAudio('player"+id2+"')\" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/triangle.jpg\"></button>";
@@ -100,17 +104,26 @@ function load(scalePage) {
             // alert("triangle" + moveTop);
             // prdname = "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
         }
-        else if(jsondata.objects[i].type == "rect"){
+        else if(jsondata.objects[i].type == "hyperlink"){
             var id1 = makeid(5);
-            prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/rect.png\"></div>";
+            var url = jsondata.objects[i].link.url;
+            prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\">"+
+                            "<a href=\""+ url +"\"target=\"_blank\">"+
+                            "<img style=\"width:100%; height: 100%;\" src=\"../icon/rect.png\">"+
+                        "</div>";
             // prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+300+"px; top:"+300+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/rect.png\"></div>";
             buildElement.push("icon"+id1);
             // alert("rect"+ moveLeft);
         }
-        else if(jsondata.objects[i].type == "circle"){
+        else if(jsondata.objects[i].type == "vod"){
             var id1 = makeid(5);
+            var url = jsondata.objects[i].link.url;
             // prdname += "<div style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><img style=\"width:100%; height: 100%;\" src=\"../icon/circle.jpg\"></div>";
-            prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"false\" autoplay=\"0\" preload =\"none\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
+            prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+moveLeft+"px; top:"+moveTop+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\">"+
+                            "<video width="+iconWidth+"px; controls=\"\" autoplay=\"false\" autoplay=\"0\" preload =\"none\" name=\"media\">"+
+                                "<source src=\""+url+"\" type=\"video/mp4\">"+
+                            "</video>"+
+                        "</div>"
             // prdname += "<div id=icon"+id1+" style=\"position: absolute; z-index:2; left:"+500+"px; top:"+500+"px; width:"+iconWidth+"px; height: "+iconHight+"px;\"><video controls=\"\" autoplay=\"false\" name=\"media\"><source src=\"http://59.127.185.48:5050/audio/songs.mp3\" type=\"audio/mpeg\"></video></div>"
             buildElement.push("icon"+id1);
             // alert("circle");
